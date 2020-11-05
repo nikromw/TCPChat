@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -25,8 +26,11 @@ namespace ChatInterface
         private static int port = 8000;
         static TcpClient client;
         static NetworkStream stream;
+        private static bool registered = false;
         public MainControl()
-        {
+        { 
+            client = new TcpClient();
+            client.Connect(host, port);
             InitializeComponent();
         }
         private void MainRegClick(object sender, RoutedEventArgs e)
@@ -34,15 +38,17 @@ namespace ChatInterface
             input = LoginInput.Text;
             input += " " + PassInput;
             Connection();
-            this.Content = new RegControl();
+            if (registered)
+            {
+                this.Content = new RegControl();
+            }
         }
 
         public static void Connection()
         {
             try
             {
-                client = new TcpClient();
-                client.Connect(host, port); //подключение клиента
+                //подключение клиента
                 stream = client.GetStream(); // получаем поток
                 byte[] data = Encoding.Unicode.GetBytes(input);
                 // запускаем новый поток для получения данных
@@ -61,7 +67,6 @@ namespace ChatInterface
         // отправка сообщений
         static void SendMessage()
         {
-            Console.WriteLine("Введите сообщение: ");
 
             while (true)
             {
@@ -109,20 +114,15 @@ namespace ChatInterface
                     Console.WriteLine(message);
                     if (message == "Successful login." || message == "Server: successfully found.")
                     {
+                        registered = true;
                         Thread receive = new Thread(new ThreadStart(Receive));
                         receive.Start();
                         SendMessage();
+                        
                     }
                     if (message == "Not find. Registration." || message == "This login or name already used.")
                     {
-                        Console.WriteLine("Введите логин : ");
-                        message = Console.ReadLine();
-                        Console.WriteLine("Введите пароль : ");
-                        message += " " + Console.ReadLine();
-                        Console.WriteLine("Введите никнейм : ");
-                        message += " " + Console.ReadLine();
-                        data = Encoding.Unicode.GetBytes(message);
-                        stream.Write(data, 0, data.Length);
+                        MessageBox.Show("Нет такого пользователя.");
                     }
                 }
                 catch
