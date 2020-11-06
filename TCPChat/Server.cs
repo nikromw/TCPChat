@@ -29,6 +29,19 @@ namespace TCPChat
         { 
         
         }
+
+        protected internal void GetChatsOfUser(string id)
+        {
+            try
+            {
+                using (var db = new ClientContext())
+                {
+
+                }
+            }
+            catch(Exception e)
+            { }
+        }
         protected internal void RemoveConnection(string id)
         {
             // получаем по id закрытое подключение
@@ -85,6 +98,7 @@ namespace TCPChat
                 }
             }
         }
+
         // отключение всех клиентов
         protected internal void Disconnect()
         {

@@ -21,126 +21,31 @@ namespace ChatInterface
     /// </summary>
     public partial class MainControl : UserControl
     {
-        static string input;
-        private const string host = "127.0.0.1";
-        private static int port = 8000;
-        static TcpClient client;
-        static NetworkStream stream;
-        private static bool registered = false;
+        ClientConnection connection ;
+
         public MainControl()
-        { 
-            client = new TcpClient();
-            client.Connect(host, port);
+        {
+            
             InitializeComponent();
         }
         private void MainRegClick(object sender, RoutedEventArgs e)
         {
-            input = LoginInput.Text;
-            input += " " + PassInput;
-            Connection();
-            if (registered)
-            {
-                this.Content = new RegControl();
-            }
+            this.Content = new RegControl();
         }
 
-        public static void Connection()
+        private void EnterClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                //подключение клиента
-                stream = client.GetStream(); // получаем поток
-                byte[] data = Encoding.Unicode.GetBytes(input);
-                // запускаем новый поток для получения данных
-                Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
-                receiveThread.Start(); //старт потока
-                stream.Write(data, 0, data.Length);
-
+                
+                connection = new ClientConnection(LoginInput.Text, PassInput.Text);
+                connection.Connection(LoginInput.Text+ " " + PassInput.Text);
+                connection.StartReceive();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
-        }
-
-
-        // отправка сообщений
-        static void SendMessage()
-        {
-
-            while (true)
-            {
-                string message = Console.ReadLine();
-                byte[] data = Encoding.Unicode.GetBytes(message);
-                stream.Write(data, 0, data.Length);
-            }
-        }
-
-        static void Receive()
-        {
-            byte[] data = new byte[128]; // буфер для получаемых данных
-            StringBuilder builder = new StringBuilder();
-            int bytes = 0;
-            while (true)
-            {
-                do
-                {
-                    bytes = stream.Read(data, 0, data.Length);
-                    builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-                }
-                while (stream.DataAvailable);
-                Console.WriteLine(builder);
-            }
-
-        }
-        // получение сообщений
-        static void ReceiveMessage()
-        {
-            while (true)
-            {
-                try
-                {
-                    byte[] data = new byte[128]; // буфер для получаемых данных
-                    StringBuilder builder = new StringBuilder();
-                    int bytes = 0;
-                    do
-                    {
-                        bytes = stream.Read(data, 0, data.Length);
-                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-                    }
-                    while (stream.DataAvailable);
-
-                    string message = builder.ToString();
-                    Console.WriteLine(message);
-                    if (message == "Successful login." || message == "Server: successfully found.")
-                    {
-                        registered = true;
-                        Thread receive = new Thread(new ThreadStart(Receive));
-                        receive.Start();
-                        SendMessage();
-                        
-                    }
-                    if (message == "Not find. Registration." || message == "This login or name already used.")
-                    {
-                        MessageBox.Show("Нет такого пользователя.");
-                    }
-                }
-                catch
-                {
-                    Console.WriteLine("Подключение прервано!"); //соединение было прервано
-                    Console.ReadLine();
-                    Disconnect();
-                }
-            }
-        }
-
-        static void Disconnect()
-        {
-            if (stream != null)
-                stream.Close();//отключение потока
-            if (client != null)
-                client.Close();
-            // Environment.Exit(0); //завершение процесса
         }
     }
 }

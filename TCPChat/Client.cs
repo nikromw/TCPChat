@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TCPChat
 {
-    enum TypeOfUser
+    public enum TypeOfUser
     { 
     admin,
     moderator,
@@ -15,14 +15,16 @@ namespace TCPChat
     public class ClientObject
     {
 
-        protected internal string Id { get; private set; }
+        public string Id { get; private set; }
         protected internal NetworkStream Stream { get; private set; }
-        string userName;
+        public string userName;
+        public string userPass;
+        public string userLogin;
         TcpClient client;
         ServerObject server;
         private bool registered =false;// объект сервера
-        private TypeOfUser type = TypeOfUser.user;
-        public List<Chat> clientChats = new List<Chat>();
+        public TypeOfUser type = TypeOfUser.user;
+        public List<Chat> clientChats { get; set; }
 
         public ClientObject(TcpClient tcpClient, ServerObject serverObject)
         {
@@ -31,6 +33,22 @@ namespace TCPChat
             server = serverObject;
         }
 
+        public void Commands(string message)
+        {
+            switch (message)
+            {
+                case "#Server: _Create_Chat":
+                    message = GetMessage();
+                    message = String.Format("{0}: {1}", userName, message);
+                    clientChats.Add(server.CreateNewChat(message));
+                    break;
+                case "#Server: _Delete_Chat":
+                    break;
+                case "#Server: _Get_Chats":
+
+                    break;
+            }
+        }
 
         public void Process()
         {
@@ -42,29 +60,21 @@ namespace TCPChat
                 string[] RegInput = message.Split(' ');
                 dbCheck(RegInput);
                 Registration();
-                    message = userName ;
+
+                message = userName ;
                 // посылаем сообщение о входе в чат всем подключенным пользователям
                 server.BroadcastMessage(message, this.Id);
                 Console.WriteLine(message);
+
                 // в бесконечном цикле получаем сообщения от клиента
                 while (true)
                 {
-
                     try
                     {
                         message = GetMessage();
                         message = String.Format("{0}: {1}", userName, message);
                         Console.WriteLine(message);
-                        switch (message)
-                        {
-                            case "#Server: _Create_Chat":
-                                message = GetMessage();
-                                message = String.Format("{0}: {1}", userName, message);
-                                clientChats.Add(server.CreateNewChat(message));
-                                break;
-                            case "#Server: _Delete_Chat":
-                                break;
-                        }
+                        Commands(message);
                         server.BroadcastMessage(message, this.Id);
                     }
                     catch (Exception e)
