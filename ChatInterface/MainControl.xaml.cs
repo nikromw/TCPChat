@@ -22,7 +22,7 @@ namespace ChatInterface
     public partial class MainControl : UserControl
     {
         ClientConnection connection ;
-        Client client;
+        Client client = new Client();
 
         public MainControl()
         {

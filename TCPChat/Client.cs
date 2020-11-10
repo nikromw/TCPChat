@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -7,13 +9,16 @@ using System.Text;
 namespace TCPChat
 {
     public enum TypeOfUser
-    { 
-    admin,
-    moderator,
-    user
+    {
+        admin,
+        moderator,
+        user
     }
     public class ClientObject
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? ID { get; set; }
 
         public string Id { get; private set; }
         protected internal NetworkStream Stream { get; private set; }
@@ -22,7 +27,7 @@ namespace TCPChat
         public string userLogin;
         TcpClient client;
         ServerObject server;
-        private bool registered =false;// объект сервера
+        private bool registered = false;// объект сервера
         public TypeOfUser type = TypeOfUser.user;
         public List<Chat> clientChats { get; set; }
 
@@ -53,15 +58,15 @@ namespace TCPChat
 
         public void SendChats()
         {
-            string Chats="";
+            string Chats = "";
             if (clientChats.Count() > 1)
             {
                 foreach (var chat in clientChats)
                 {
-                    Chats += chat.Id+" "+chat.chatName+" ";
+                    Chats += chat.Id + " " + chat.chatName + " ";
                 }
             }
-            server.RegOrEnterResponce(Chats , this.Id);
+            server.RegOrEnterResponce(Chats, this.Id);
         }
 
         public void Process()
@@ -74,7 +79,7 @@ namespace TCPChat
                 string[] RegInput = message.Split(' ');
                 dbCheck(RegInput);
                 Registration();
-                message = userName ;
+                message = userName;
                 // посылаем сообщение о входе в чат всем подключенным пользователям
                 server.BroadcastMessage(message, this.Id);
                 Console.WriteLine(message);
@@ -137,7 +142,7 @@ namespace TCPChat
                         server.RegOrEnterResponce(message, this.Id);
                         break;
                     }
-                    else 
+                    else
                     {
                         server.RegOrEnterResponce("#Server: _Fail_Registration", this.Id);
                     }
@@ -146,19 +151,25 @@ namespace TCPChat
             }
         }
 
-        public  string dbCheck(string[] RegInput)
+        public string dbCheck(string[] RegInput)
         {
+            string msg = "";
             using (var db = new ClientContext())
             {
                 foreach (var dbclient in db.clients.ToList())
                 {
-                    if ((dbclient.login == RegInput[0] && dbclient.password == RegInput[1])|| (dbclient.login == RegInput[0] && dbclient.name == RegInput[2]))
+                    if ((dbclient.login == RegInput[0] && dbclient.password == RegInput[1]) || (dbclient.login == RegInput[0] && dbclient.name == RegInput[2]))
                     {
                         registered = !registered;
                         userName = dbclient.name;
                         clientChats.AddRange(dbclient.ChatsOfClients.ToList());
                         server.AddConnection(this);
+                        foreach (var chat in clientChats)
+                        {
+                            msg += chat.Id + " " + chat.chatName;
+                        }
                         server.RegOrEnterResponce("#Server: _Success_Enter", this.Id);
+                        server.RegOrEnterResponce($"#Server: _Get_Info_User {userName} {msg}", this.Id);
                         return "#Server: _Success_Enter";
                     }
                 }

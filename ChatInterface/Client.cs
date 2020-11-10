@@ -12,13 +12,13 @@ namespace ChatInterface
         {
             try
             {
-                connection = connection.GetInstance(login, password);
+                connection = ClientConnection.GetInstance(login, password);
             }
             catch (Exception e)
             {
                 return null;
             }
-            return null;
+            return connection;
         }
     }
 }

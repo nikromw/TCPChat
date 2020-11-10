@@ -21,6 +21,9 @@ namespace ChatInterface
         public ChatControl()
         {
             InitializeComponent();
+            ChatsView.Items.Add(ClientConnection.chats);
         }
+
+
     }
 }

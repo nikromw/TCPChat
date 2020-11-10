@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading;
 using System.Windows.Documents;
@@ -16,9 +17,9 @@ namespace ChatInterface
         static NetworkStream stream;
         static Socket socetStream;
         public static bool registered = false;
-        private string login, password, name;
+        private static string login, password, name;
         private static ClientConnection singleClient;
-        //private List<> chats = new List<T>(); 
+        public static Dictionary<string, string> chats = new Dictionary<string, string>();
 
         protected ClientConnection() { }
 
@@ -36,7 +37,7 @@ namespace ChatInterface
             client = new TcpClient();
         }
 
-        public ClientConnection GetInstance(string pass, string login)
+        public static ClientConnection GetInstance(string pass, string login)
         {
             if (singleClient == null)
             {
@@ -51,13 +52,20 @@ namespace ChatInterface
         //Open connection and send login and password
         public void Connection(string inputData)
         {
-            client = new TcpClient();
-            client.Connect(host, port);
-            stream = client.GetStream();
-            Thread receiveThread = new Thread(new ThreadStart(EnterOrRegistrationCallBack));
-            receiveThread.Start();
-            byte[] data = Encoding.Unicode.GetBytes(inputData);
-            stream.Write(data, 0, data.Length);
+            try
+            {
+                client = new TcpClient();
+                client.Connect(host, port);
+                stream = client.GetStream();
+                Thread receiveThread = new Thread(new ThreadStart(EnterOrRegistrationCallBack));
+                receiveThread.Start();
+                byte[] data = Encoding.Unicode.GetBytes(inputData);
+                stream.Write(data, 0, data.Length);
+            }
+            catch (Exception e)
+            { 
+            
+            }
 
         }
 
@@ -112,6 +120,8 @@ namespace ChatInterface
         {
             byte[] data = new byte[128]; // буфер для получаемых данных
             StringBuilder builder = new StringBuilder();
+            string enterData = "";
+            
             int bytes = 0;
             while (true)
             {
@@ -121,6 +131,23 @@ namespace ChatInterface
                     builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                 }
                 while (stream.DataAvailable);
+                string[] enterDataArr = builder.ToString().Split(' ');
+                //получаем входящие данные и проверяем их на команды сервера 
+                if (enterDataArr[0] == "#Server:")
+                {
+                    switch (enterDataArr[1])
+                    {
+                        case "_Get_Info_User":
+                            name = enterDataArr[2];
+                            for (int i = 3; i < enterData.Length+1; i+=2)
+                            {
+                                chats.Add(enterDataArr[i], enterDataArr[i+1]);
+                            }
+                            break;
+                        case "":
+                            break;
+                    }
+                }
             }
 
         }
