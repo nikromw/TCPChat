@@ -11,7 +11,7 @@
             DropIndex("dbo.ClientParamChats", new[] { "Chat_Id" });
             DropPrimaryKey("dbo.Chats");
             DropPrimaryKey("dbo.ClientParamChats");
-            AlterColumn("dbo.Chats", "Id", c => c.Int(nullable: false, identity: true));
+            AlterColumn("dbo.Chats", "Id", c => c.Guid(nullable: false, identity: true));
             AlterColumn("dbo.ClientParamChats", "Chat_Id", c => c.Int(nullable: false));
             AddPrimaryKey("dbo.Chats", "Id");
             AddPrimaryKey("dbo.ClientParamChats", new[] { "ClientParam_Id", "Chat_Id" });
