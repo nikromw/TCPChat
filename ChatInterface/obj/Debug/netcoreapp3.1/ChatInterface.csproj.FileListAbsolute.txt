@@ -21,3 +21,5 @@ C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Reg
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\MainControl.g.cs
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\MainControl.baml
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\ChatInterface.csprojAssemblyReference.cache
+C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\ChatControl.g.cs
+C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\ChatControl.baml

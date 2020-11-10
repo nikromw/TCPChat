@@ -34,3 +34,4 @@ C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.c
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.dll
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.pdb
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.genruntimeconfig.cache
+C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.csprojAssemblyReference.cache

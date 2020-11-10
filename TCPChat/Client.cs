@@ -41,6 +41,7 @@ namespace TCPChat
                     message = GetMessage();
                     message = String.Format("{0}: {1}", userName, message);
                     clientChats.Add(server.CreateNewChat(message));
+                    SendChats();
                     break;
                 case "#Server: _Delete_Chat":
                     break;
@@ -48,6 +49,19 @@ namespace TCPChat
 
                     break;
             }
+        }
+
+        public void SendChats()
+        {
+            string Chats="";
+            if (clientChats.Count() > 1)
+            {
+                foreach (var chat in clientChats)
+                {
+                    Chats += chat.Id+" "+chat.chatName+" ";
+                }
+            }
+            server.RegOrEnterResponce(Chats , this.Id);
         }
 
         public void Process()
@@ -60,7 +74,6 @@ namespace TCPChat
                 string[] RegInput = message.Split(' ');
                 dbCheck(RegInput);
                 Registration();
-
                 message = userName ;
                 // посылаем сообщение о входе в чат всем подключенным пользователям
                 server.BroadcastMessage(message, this.Id);
@@ -104,7 +117,7 @@ namespace TCPChat
             {
                 string message;
                 server.AddConnection(this);
-                server.RegOrEnterResponce("Not find. Registration.", this.Id);
+                server.RegOrEnterResponce("#Server: _User_Not_Found", this.Id);
                 while (!registered)
                 {
                     message = GetMessage();
@@ -120,15 +133,14 @@ namespace TCPChat
                             db.clients.Add(newClient);
                             db.SaveChanges();
                         }
-                        message = "Successful login.";
+                        message = "#Server: _Successful_Login";
                         server.RegOrEnterResponce(message, this.Id);
                         break;
                     }
                     else 
                     {
-                        server.RegOrEnterResponce("This login or name already used.", this.Id);
+                        server.RegOrEnterResponce("#Server: _Fail_Registration", this.Id);
                     }
-
                 }
 
             }
@@ -144,9 +156,10 @@ namespace TCPChat
                     {
                         registered = !registered;
                         userName = dbclient.name;
+                        clientChats.AddRange(dbclient.ChatsOfClients.ToList());
                         server.AddConnection(this);
-                        server.RegOrEnterResponce("Server: successfully found.", this.Id);
-                        return "Server: successfully found.";
+                        server.RegOrEnterResponce("#Server: _Success_Enter", this.Id);
+                        return "#Server: _Success_Enter";
                     }
                 }
             }

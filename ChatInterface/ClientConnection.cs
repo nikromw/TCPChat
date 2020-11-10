@@ -14,24 +14,39 @@ namespace ChatInterface
         private static int port = 8000;
         static TcpClient client;
         static NetworkStream stream;
-        private static bool registered = false;
+        static Socket socetStream;
+        public static bool registered = false;
         private string login, password, name;
-        private List<> chats = new List<T>(); 
+        private static ClientConnection singleClient;
+        //private List<> chats = new List<T>(); 
 
-        public ClientConnection() { }
+        protected ClientConnection() { }
 
-        public ClientConnection(string _login, string _password)
+        protected ClientConnection(string _login, string _password)
         {
             login = _login;
             password = _password;
             client = new TcpClient();
         }
-        public ClientConnection(string _login, string _password, string _name)
+        protected ClientConnection(string _login, string _password, string _name)
         {
             login = _login;
             password = _password;
             name = _name;
             client = new TcpClient();
+        }
+
+        public ClientConnection GetInstance(string pass, string login)
+        {
+            if (singleClient == null)
+            {
+                singleClient= new ClientConnection(pass, login);
+                return singleClient;
+            }
+            else
+            {
+                return singleClient;
+            }
         }
         //Open connection and send login and password
         public void Connection(string inputData)
@@ -43,14 +58,15 @@ namespace ChatInterface
             receiveThread.Start();
             byte[] data = Encoding.Unicode.GetBytes(inputData);
             stream.Write(data, 0, data.Length);
+
         }
 
         public void EnterOrRegistrationCallBack()
         {
+            StringBuilder builder = new StringBuilder();
             while (true)
             {
                 byte[] data = new byte[128]; // буфер для получаемых данных
-                StringBuilder builder = new StringBuilder();
                 int bytes = 0;
                 do
                 {
@@ -77,14 +93,13 @@ namespace ChatInterface
         // запускаем новый поток для получения данных
         public void StartReceive()
         {
-            Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
+            Thread receiveThread = new Thread(new ThreadStart(Receive));
             receiveThread.Start(); //старт потока
         }
 
         // отправка сообщений
         static void SendMessage()
         {
-
             while (true)
             {
                 string message = Console.ReadLine();
@@ -92,7 +107,7 @@ namespace ChatInterface
                 stream.Write(data, 0, data.Length);
             }
         }
-
+        //получение данных
         static void Receive()
         {
             byte[] data = new byte[128]; // буфер для получаемых данных
@@ -106,7 +121,6 @@ namespace ChatInterface
                     builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                 }
                 while (stream.DataAvailable);
-                Console.WriteLine(builder);
             }
 
         }

@@ -22,6 +22,7 @@ namespace ChatInterface
     public partial class MainControl : UserControl
     {
         ClientConnection connection ;
+        Client client;
 
         public MainControl()
         {
@@ -30,17 +31,25 @@ namespace ChatInterface
         }
         private void MainRegClick(object sender, RoutedEventArgs e)
         {
-            this.Content = new RegControl();
+            //this.Content = new RegControl();
+            this.Content = new ChatControl();
         }
 
         private void EnterClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                
-                connection = new ClientConnection(LoginInput.Text, PassInput.Text);
+                connection = client.GetConnection(LoginInput.Text, PassInput.Text);
                 connection.Connection(LoginInput.Text+ " " + PassInput.Text);
-                connection.StartReceive();
+                while (true)
+                {
+                    if (ClientConnection.registered)
+                    {
+                        connection.StartReceive();
+                        break;
+                    }
+                }
+                this.Content = new ChatControl();
             }
             catch (Exception ex)
             {
