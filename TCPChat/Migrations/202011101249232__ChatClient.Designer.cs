@@ -7,13 +7,13 @@ namespace TCPChat.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ChatClients1 : IMigrationMetadata
+    public sealed partial class _ChatClient : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChatClients1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_ChatClient));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011031136103_ChatClients1"; }
+            get { return "202011101249232__ChatClient"; }
         }
         
         string IMigrationMetadata.Source
