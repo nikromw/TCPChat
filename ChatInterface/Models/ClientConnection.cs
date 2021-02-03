@@ -26,7 +26,7 @@ namespace ChatInterface
         static NetworkStream stream;
 
         static List<char> listdata = new List<char>();
-        public static string registered = "registered";
+        public static string registered = "registered";//временно открыл доступ , т.к. нет связи с сервером для имитации отказа
         private string login, password;
         private static ClientConnection singleClient;
         public static ObservableCollection<Chat> Chats = new ObservableCollection<Chat>();

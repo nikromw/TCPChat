@@ -25,3 +25,6 @@ C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Int
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\MainWindow.baml
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\RegControl.baml
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\ChatInterface.csprojAssemblyReference.cache
+C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\IpControl.g.cs
+C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\IpControl.baml
