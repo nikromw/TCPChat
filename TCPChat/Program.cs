@@ -5,16 +5,16 @@ namespace TCPChat
 {
     class Program
     {
-        static ServerObject server; // сервер
-        static Thread listenThread; // потока для прослушивания
-        static Thread RegThread; // потока для прослушивания
+        static ServerObject server; 
+        static Thread listenThread; 
+        static Thread RegThread;
         static void Main(string[] args)
         {
             try
             {
                 server = new ServerObject();
                 listenThread = new Thread(new ThreadStart(server.Listen));
-                listenThread.Start(); //старт потока
+                listenThread.Start(); 
             }
             catch (Exception ex)
             {

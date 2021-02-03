@@ -1,0 +1,8 @@
+C:\Users\Salvador\source\repos\TCPChat\ChatClasses\bin\Debug\netstandard2.0\ChatClasses.deps.json
+C:\Users\Salvador\source\repos\TCPChat\ChatClasses\bin\Debug\netstandard2.0\ChatClasses.dll
+C:\Users\Salvador\source\repos\TCPChat\ChatClasses\bin\Debug\netstandard2.0\ChatClasses.pdb
+C:\Users\Salvador\source\repos\TCPChat\ChatClasses\obj\Debug\netstandard2.0\ChatClasses.csproj.CoreCompileInputs.cache
+C:\Users\Salvador\source\repos\TCPChat\ChatClasses\obj\Debug\netstandard2.0\ChatClasses.AssemblyInfoInputs.cache
+C:\Users\Salvador\source\repos\TCPChat\ChatClasses\obj\Debug\netstandard2.0\ChatClasses.AssemblyInfo.cs
+C:\Users\Salvador\source\repos\TCPChat\ChatClasses\obj\Debug\netstandard2.0\ChatClasses.dll
+C:\Users\Salvador\source\repos\TCPChat\ChatClasses\obj\Debug\netstandard2.0\ChatClasses.pdb

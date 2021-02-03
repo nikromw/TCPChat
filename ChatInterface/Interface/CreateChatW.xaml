@@ -1,0 +1,25 @@
+﻿<Window x:Class="ChatInterface.CreateChatW"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatInterface"
+        mc:Ignorable="d"
+        Title="CreateChatW" Height="300" Width="250">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="116*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button x:Name="CreateChatBtnSmallWindow" Content="Create" Grid.Column="1" HorizontalAlignment="Center" Margin="0,28,0,0" Grid.Row="2" VerticalAlignment="Top" Height="20" Width="84" Click="CreateChatBtnSmall"/>
+        <TextBox x:Name="NameChatBox" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Center" Width="114" Height="35" RenderTransformOrigin="0.5,0.5" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,69,0,0" Text="Name of chat" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Height="16" Width="72"/>
+
+    </Grid>
+</Window>

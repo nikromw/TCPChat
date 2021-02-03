@@ -24,17 +24,13 @@ C:\Users\Salvador\source\repos\TCPChat\TCPChat\bin\Debug\netcoreapp3.1\runtimes\
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.csproj.CoreCompileInputs.cache
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.AssemblyInfoInputs.cache
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.AssemblyInfo.cs
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.csproj.CopyComplete
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.dll
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.pdb
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.genruntimeconfig.cache
-<<<<<<< Updated upstream
-C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.csprojAssemblyReference.cache
-C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.Migrations._ChatClient.resources
+C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.csproj.CoreCompileInputs.cache
+C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.Migrations._Chats_Clients.resources
 C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.csproj.GenerateResource.cache
-=======
-C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.Migrations._ChatClient.resources
->>>>>>> Stashed changes
+C:\Users\Salvador\source\repos\TCPChat\TCPChat\obj\Debug\netcoreapp3.1\TCPChat.csprojAssemblyReference.cache

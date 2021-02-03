@@ -11,6 +11,7 @@ namespace TCPChat
         { }
 
         public DbSet<Chat> chats { get; set; }
-        public DbSet<ClientParam> clients { get; set; }
+        public DbSet<ClientObject> clients { get; set; }
+        public DbSet<Message> messages { get; set; }
     }
 }

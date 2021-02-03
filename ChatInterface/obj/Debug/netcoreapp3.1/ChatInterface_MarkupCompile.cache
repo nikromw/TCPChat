@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\App.xaml
-41769521193
+51917585852
 
-81825814994
+14372996969
 1921654412462
-ChatControl.xaml;MainControl.xaml;MainWindow.xaml;RegControl.xaml;
+Interface\ChatControl.xaml;Interface\CreateChatW.xaml;Interface\MainControl.xaml;Interface\MainWindow.xaml;Interface\RegControl.xaml;
 
 False
 
