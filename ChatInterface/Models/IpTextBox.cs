@@ -7,12 +7,12 @@ using System.Windows.Controls;
 
 namespace ChatInterface.Models
 {
-    public class IpTextBox : TextBox
+    public class IpTextBox : FrameworkElement
     {
 
         static Regex ip = new Regex(@"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b");
 
-        public static readonly DependencyProperty TextProperty;
+        public static  DependencyProperty TextProperty;
 
         static IpTextBox()
         {
@@ -20,32 +20,28 @@ namespace ChatInterface.Models
                         "TextCheck",
                         typeof(string),
                         typeof(IpTextBox),
-                        new FrameworkPropertyMetadata(),
-                        CheckText);
+                        new FrameworkPropertyMetadata());
         }
         public string TextCheck
         {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            get {
+                string str = (string)GetValue(TextProperty);
+                MatchCollection result = ip.Matches(str);
+                if (result.Count != 0)
+                {
+                    ClientConnection.registered = "registered";
+                    return "Succes login";
+                }
+                else
+                {
+                    return "Ip has wrong format.";
+                }
+            }
+            set {
+                    SetValue(TextProperty, value); 
+            }
         }
 
-
-        private static bool CheckText(object value)
-        {
-            string str = (string)value;
-            MatchCollection result = ip.Matches(str);
-            if (result.Count != 0)
-            {
-                ClientConnection.registered = "registered";
-                return true;
-            }
-            else
-            {
-                ClientConnection.registered = "unregistered";
-                return false;
-            }
-
-        }
     }
 
 

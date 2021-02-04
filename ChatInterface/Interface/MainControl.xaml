@@ -30,8 +30,10 @@
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="80,15,0,0" Grid.Row="1" Text="Login" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="80,15,0,0" Grid.Row="2" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Button Content="Registration" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="78" Click="MainRegClick"/>
-        <custom:IpTextBox Text="{Binding Path=TextCheck}"  x:Name="IpBox" Grid.Column="2"   HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="80,10,0,0" Grid.Row="3" Text="Server Ip" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="50"/>
+        <TextBox  x:Name="IpBox" Grid.Column="2"  HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22"/>
+        <custom:IpTextBox  x:Name="CheckIpBox" TextCheck="{Binding  ElementName=IpBox , Path=Text}">
+        </custom:IpTextBox>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="80,10,0,0" Grid.Row="3" Text="Server Ip" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="50"/>
 
     </Grid>
 </UserControl>

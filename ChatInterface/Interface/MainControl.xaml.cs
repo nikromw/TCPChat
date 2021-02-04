@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading.Tasks;
 using ChatInterface.ViewModels;
+using ChatInterface.Models;
 
 namespace ChatInterface
 {
@@ -41,7 +42,8 @@ namespace ChatInterface
             try
             {
                 //connection = Client.GetConnection(LoginInput.Text, PassInput.Text);
-               // connection.Connection("#Server: _Enter" + " " + LoginInput.Text + " " + PassInput.Text);
+                // connection.Connection("#Server: _Enter" + " " + LoginInput.Text + " " + PassInput.Text);
+                MessageBox.Show(CheckIpBox.TextCheck.ToString());
 
                 while (true)
                 {
