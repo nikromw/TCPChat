@@ -9,8 +9,8 @@ namespace ChatInterface.Models
 {
     public class IpTextBox : FrameworkElement
     {
-
-        static Regex ip = new Regex(@"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b");
+        //регулярка для проверки формата айпи
+        static Regex ip = new Regex(@"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
 
         public static  DependencyProperty TextProperty;
 
@@ -25,6 +25,7 @@ namespace ChatInterface.Models
         public string TextCheck
         {
             get {
+                //если есть совпадения правильности формата , то все ок. Реальность существаовния айпи пока нет нужды проверять
                 string str = (string)GetValue(TextProperty);
                 MatchCollection result = ip.Matches(str);
                 if (result.Count != 0)
