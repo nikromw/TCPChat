@@ -57,8 +57,8 @@ namespace ChatInterface
 
         public static void SendMessage(string message)
         {
-            byte[] data = Encoding.Unicode.GetBytes(message);
-            stream.Write(data, 0, data.Length);
+          //  byte[] data = Encoding.Unicode.GetBytes(message);
+          //  stream.Write(data, 0, data.Length);
         }
 
         public static ClientConnection GetInstance(string pass = "", string login = "", string name = "")

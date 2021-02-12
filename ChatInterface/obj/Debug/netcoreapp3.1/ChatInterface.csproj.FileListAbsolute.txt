@@ -15,14 +15,14 @@ C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Cha
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\ChatInterface.pdb
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\ChatInterface.genruntimeconfig.cache
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\ChatControl.g.cs
-C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\CreateChatW.g.cs
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\MainControl.g.cs
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\MainWindow.g.cs
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\RegControl.g.cs
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\ChatControl.baml
-C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\CreateChatW.baml
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\MainControl.baml
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\MainWindow.baml
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\Interface\RegControl.baml
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\ChatInterface.csprojAssemblyReference.cache
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Users\Salvador\source\repos\TCPChat\ChatInterface\bin\Debug\netcoreapp3.1\Prism.dll
+C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\ChatInterface.csproj.CopyComplete

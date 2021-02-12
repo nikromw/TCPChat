@@ -1,5 +1,5 @@
 ﻿ChatInterface
-
+1.0.0.0
 
 winexe
 C#
@@ -8,13 +8,13 @@ C:\Users\Salvador\source\repos\TCPChat\ChatInterface\obj\Debug\netcoreapp3.1\
 ChatInterface
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Salvador\source\repos\TCPChat\ChatInterface\App.xaml
-51917585852
+41759763712
 
-15-1703708054
+16-1808612284
 1921654412462
-Interface\ChatControl.xaml;Interface\CreateChatW.xaml;Interface\MainControl.xaml;Interface\MainWindow.xaml;Interface\RegControl.xaml;
+Interface\ChatControl.xaml;Interface\MainControl.xaml;Interface\MainWindow.xaml;Interface\RegControl.xaml;
 
-False
+True
 

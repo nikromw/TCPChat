@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using ChatInterface.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -16,12 +17,7 @@ namespace ChatInterface
         {
             connection = ClientConnection.GetInstance();
             InitializeComponent();
-        }
-
-        private void CreateChatBtn(object sender, RoutedEventArgs e)
-        {
-            Window chatCreateW = new CreateChatW();
-            chatCreateW.Show();
+            DataContext = new ChatControlViewModel();
         }
 
 

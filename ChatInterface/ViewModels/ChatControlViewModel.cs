@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -10,7 +11,7 @@ namespace ChatInterface.ViewModels
     {
         private Chat selectedChat;
         public ObservableCollection<Chat> Chats { get; set; }
-
+        private RelayCommand addCommand;
         // Так как получение чатов пока не налажено, создаю тестовый набор чатов 
         public ChatControlViewModel()
         {
@@ -22,6 +23,24 @@ namespace ChatInterface.ViewModels
                 new Chat { ChatName = "TestChat4" , AdminId = "AdminId4", AdminName = "Admin4" , ChatId ="ChatId4" , ChatMessages = new List<Message>() , ChatUsers = new List<string> { "testUser4"} },
                 new Chat { ChatName = "TestChat5" , AdminId = "AdminId5", AdminName = "Admin5" , ChatId ="ChatId5" , ChatMessages = new List<Message>() , ChatUsers = new List<string> { "testUser5"} },
             };
+        }
+
+        public RelayCommand AddNewChat
+        {
+            get
+            {
+                return addCommand ??
+                    (addCommand = new RelayCommand(obj =>
+                    {
+                        string name = obj as string;
+                        if (name != "" && name != null)
+                        {
+                            Chat newChat = new Chat();
+                            newChat.ChatName = (name);
+                            Chats.Add(newChat);
+                        }
+                    }));
+            }
         }
 
         public Chat SelectedChat
