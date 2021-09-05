@@ -15,9 +15,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nikro\\OneDrive\\Документы\\TcpChat\\Chat\\Chat.csproj",
-      "projectName": "Chat",
-      "projectPath": "C:\\Users\\nikro\\OneDrive\\Документы\\TcpChat\\Chat\\Chat.csproj",
+      "projectUniqueName": "C:\\Users\\nikro\\OneDrive\\Документы\\TcpChat\\Chat\\Server.csproj",
+      "projectName": "Server",
+      "projectPath": "C:\\Users\\nikro\\OneDrive\\Документы\\TcpChat\\Chat\\Server.csproj",
       "packagesPath": "C:\\Users\\nikro\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\nikro\\OneDrive\\Документы\\TcpChat\\Chat\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oDp2qH2qUOzXdeUlzz7tSf+PKIVgo+C5Cc9GrZqNWMdOllLcPZWe6pIaOVtsZj4tskuqqv+CK/QFqRlmsGIOiw==",
+  "dgSpecHash": "ttSJatgyMB3/BRPHPfnzDB4lko5feF5ctPph51hWOT+3Jlafx4p9Y43+OcjKwFEyoVNZq5uMFILZabGu4BYUAA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nikro\\OneDrive\\Документы\\TcpChat\\Chat\\Chat.csproj",
+  "projectFilePath": "C:\\Users\\nikro\\OneDrive\\Документы\\TcpChat\\Chat\\Server.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
